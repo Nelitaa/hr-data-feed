@@ -1,19 +1,22 @@
-source "https://rubygems.org"
+source 'https://rubygems.org'
 
 # Ruby version
-ruby "3.2.1"
+ruby '3.2.1'
+
+# Use rubocop to lint code
+gem 'rubocop', '>= 1.0', '< 2.0'
 
 # Use json to encode and decode JSON data
-gem "json"
+gem 'json'
 
 # Use Rest Client to make HTTP requests
-gem "rest-client"
+gem 'rest-client'
 
 # Use CVS to parse CSV files
-gem "csv"
+gem 'csv'
 
 # Use net-sftp to transfer files over SFTP
-gem "net-sftp"
+gem 'net-sftp'
 
 # Use RSpec for testing
-gem "rspec"
+gem 'rspec'
