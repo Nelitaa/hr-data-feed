@@ -36,5 +36,19 @@
       <% end %>
     </tbody>
   </table>
+
+  <h2>Add New User</h2>
+  <form action="/create" method="post">
+    <label for="id">Id:</label>
+    <input type="number" name="id" required>
+    <br>
+    <label for="user">Name:</label>
+    <input type="text" name="user" required>
+    <br>
+    <label for="status">State:</label>
+    <input type="text" name="status" required>
+    <br>
+    <input type="submit" value="Add User">
+  </form>
 </body>
 </html>

@@ -2,39 +2,42 @@ require 'csv'
 require 'sinatra'
 
 csv_file_path = 'data/users_hr_sync.csv'
-@csv_data = CSV.read(csv_file_path, headers: true)
+
+# Check if the CSV file exists
+if File.exist?(csv_file_path)
+  csv_data = CSV.read(csv_file_path, headers: true)
+else
+  # If the file doesn't exist, create a new one with headers
+  CSV.open(csv_file_path, 'w') do |csv|
+    csv << ['id', 'user', 'status']
+  end
+  csv_data = CSV.read(csv_file_path, headers: true)
+end
 
 # Route to display the list of users
 get '/' do
+  @csv_data = csv_data
   erb :index
 end
 
-# # Check if the CSV file exists
-# if File.exist?(csv_file_path)
-#   csv_data = CSV.read(csv_file_path, headers: true)
-# else
-#   # If the file doesn't exist, create a new one with headers
-#   CSV.open(csv_file_path, 'w') do |csv|
-#     csv << ['id', 'user', 'status']
-#   end
-#   csv_data = CSV.read(csv_file_path, headers: true)
-# end
+# Route to add a new user
+post '/create' do
+  new_user = {
+    id: params[:id],
+    user: params[:user],
+    status: params[:status]
+  }
 
+  CSV.open(csv_file_path, 'a') do |csv|
+    csv << [new_user[:id], new_user[:user], new_user[:status]]
+  end
 
-# csv_data.each do |row|
-#   user_id = row['id']
-#   user_name = row['user']
-#   sync_status = row['status']
+  csv_data = CSV.read(csv_file_path, headers: true)
 
-#   puts "User ID: #{user_id}, User Name: #{user_name}, Sync Status: #{sync_status}"
-# end
+  redirect '/'
+end
 
 # # Add a new user to the CSV file or update it if it already exists
-# new_user = {
-#   id: '9',
-#   user: 'Miriam',
-#   status: 'synchronized'
-# }
 
 # def user_exists?(csv_data, user_id)
 #   user_id = user_id.to_i
@@ -63,10 +66,4 @@ end
 #   end
 
 #   puts "User with ID #{new_user[:id]} updated."
-# else
-#   # Add a new user in a new row
-#   CSV.open(csv_file_path, 'a') do |csv|
-#     csv << [new_user[:id], new_user[:user], new_user[:status]]
-#   end
-#   puts "New user added to the CSV file."
 # end
