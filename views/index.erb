@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Users List</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 50%;
+    }
+    table, th, td {
+      border: 1px solid black;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <h1>Users List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @csv_data.each do |row| %>
+        <tr>
+          <td><%= row['id'] %></td>
+          <td><%= row['user'] %></td>
+          <td><%= row['status'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</body>
+</html>

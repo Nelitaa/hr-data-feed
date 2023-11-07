@@ -3,6 +3,9 @@ source 'https://rubygems.org'
 # Ruby version
 ruby '3.2.1'
 
+# Use sinatra as web framework
+gem 'sinatra'
+
 # Use rubocop to lint code
 gem 'rubocop', '>= 1.0', '< 2.0'
 
