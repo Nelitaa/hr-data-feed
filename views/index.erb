@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Users List</title>
+  <title>Users</title>
   <style>
     table {
       border-collapse: collapse;
@@ -13,6 +13,9 @@
     th, td {
       padding: 8px;
       text-align: left;
+    }
+    label {
+      margin: 8px;
     }
   </style>
 </head>
@@ -37,7 +40,7 @@
     </tbody>
   </table>
 
-  <h2>Add New User</h2>
+  <h2>Add New User or Update Existing User</h2>
   <form action="/create" method="post">
     <label for="id">Id:</label>
     <input type="number" name="id" required>
@@ -48,7 +51,7 @@
     <label for="status">State:</label>
     <input type="text" name="status" required>
     <br>
-    <input type="submit" value="Add User">
+    <input type="submit" value="Add/Update User">
   </form>
 </body>
 </html>

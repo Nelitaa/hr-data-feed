@@ -1,11 +1,7 @@
 id,user,status
-1,Melissa,synchronized
-2,Amanda,synchronized
-3,Mike,synchronized
+1,Carolina,synchronized
+2,Marinanela,synchronized
+3,Laura,not_synchronized
 4,Juan,not_synchronized
-5,Martha,synchronized78,zzz,not_synchronized
-234,3456,243254
-343,234,234
-11111,111,111
-2222,2222,222
-3333,3333,333
+5,Nisha,not_synchronized
+6,Martha,synchronized
