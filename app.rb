@@ -1,6 +1,7 @@
 require 'csv'
 require 'sinatra'
 
+bucket_name = 'HR-DATA-2023'
 csv_file_path = 'data/users_hr_sync.csv'
 
 # Check if the CSV file exists
