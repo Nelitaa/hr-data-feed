@@ -1,19 +1,28 @@
 require 'csv'
 require 'sinatra'
+require 'aws-sdk-s3'
+require 'dotenv/load'
+require 'yaml'
 
-bucket_name = 'HR-DATA-2023'
+# Path to the CSV file
 csv_file_path = 'data/users_hr_sync.csv'
 
-# Check if the CSV file exists
-if File.exist?(csv_file_path)
-  csv_data = CSV.read(csv_file_path, headers: true)
-else
-  # If the file doesn't exist, create a new one with headers
-  CSV.open(csv_file_path, 'w') do |csv|
-    csv << ['id', 'user', 'status']
-  end
-  csv_data = CSV.read(csv_file_path, headers: true)
-end
+# Load AWS S3 credentials from the config file
+config = YAML.load_file('config/config.yml')&.[](settings.environment.to_s) || {}
+
+# Extract AWS S3 credentials
+s3_credentials = {
+  access_key_id: config['aws_access_key_id'],
+  secret_access_key: config['aws_secret_access_key'],
+  region: config['aws_region']
+}
+
+# Initialize AWS S3 client
+s3 = Aws::S3::Client.new(region: ENV['AWS_REGION'])
+
+# Download CSV file from S3
+s3_object = s3.get_object(bucket: ENV['AWS_S3_BUCKET'], key: 'users_hr_sync.csv')
+csv_data = CSV.parse(s3_object.body.read, headers: true)
 
 # Function to check if a user already exists
 def user_exists?(csv_data, user_id)
