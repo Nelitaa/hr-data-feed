@@ -2,22 +2,30 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    b2 (0.0.2)
-      httparty (~> 0.13)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.848.0)
+    aws-sdk-core (3.186.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.5)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.72.0)
+      aws-sdk-core (~> 3, >= 3.184.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.136.0)
+      aws-sdk-core (~> 3, >= 3.181.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.6)
+    aws-sigv4 (1.6.1)
+      aws-eventstream (~> 1, >= 1.0.2)
     csv (3.2.7)
     diff-lcs (1.5.0)
-    httparty (0.21.0)
-      mini_mime (>= 1.0.0)
-      multi_xml (>= 0.5.2)
+    dotenv (2.8.1)
+    jmespath (1.6.2)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
-    mini_mime (1.1.5)
-    multi_xml (0.6.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    net-sftp (4.0.0)
-      net-ssh (>= 5.0.0, < 8.0.0)
-    net-ssh (7.2.0)
     parallel (1.23.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -64,17 +72,19 @@ GEM
       tilt (~> 2.0)
     tilt (2.3.0)
     unicode-display_width (2.5.0)
+    yaml (0.3.0)
 
 PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
-  b2
+  aws-sdk-s3
   csv
-  net-sftp
+  dotenv
   rspec
   rubocop (>= 1.0, < 2.0)
   sinatra
+  yaml
 
 RUBY VERSION
    ruby 3.2.1p31
