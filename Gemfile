@@ -15,9 +15,6 @@ gem 'csv'
 # use aws-sdk-s3 to upload files to S3
 gem 'aws-sdk-s3'
 
-# Use yaml to parse YAML files
-gem 'yaml'
-
 # Use dotenv to load environment variables
 gem 'dotenv'
 
