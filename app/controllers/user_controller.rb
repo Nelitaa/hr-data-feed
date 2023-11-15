@@ -8,9 +8,9 @@ class UserController < Sinatra::Base
   configure do
     set :views, 'app/views'
   end
-  
+
   before do
-    @csv_data = fetch_csv_data(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV['AWS_FILE_NAME'])
+    @csv_data = fetch_csv_data(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV.fetch('AWS_FILE_NAME', nil))
   end
 
   get '/' do
@@ -26,7 +26,7 @@ class UserController < Sinatra::Base
       new_user.add_user(@csv_data)
     end
 
-    save_csv_data_to_s3(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV['AWS_FILE_NAME'], @csv_data)
+    save_csv_data_to_s3(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV.fetch('AWS_FILE_NAME', nil), @csv_data)
     redirect '/'
   end
 
@@ -36,7 +36,7 @@ class UserController < Sinatra::Base
 
     if updated_user.user_exists?(@csv_data)
       updated_user.update_user(@csv_data)
-      save_csv_data_to_s3(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV['AWS_FILE_NAME'], @csv_data)
+      save_csv_data_to_s3(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV.fetch('AWS_FILE_NAME', nil), @csv_data)
     end
 
     redirect '/'

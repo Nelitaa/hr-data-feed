@@ -1,4 +1,4 @@
 require 'sinatra'
-require_relative './app/controllers/user_controller.rb'
+require_relative 'app/controllers/user_controller'
 
 use UserController
