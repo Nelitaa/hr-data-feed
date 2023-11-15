@@ -12,7 +12,7 @@ gem 'rubocop', '>= 1.0', '< 2.0'
 # Use CVS to parse CSV files
 gem 'csv'
 
-# use aws-sdk-s3 to upload files to S3
+# Use aws-sdk-s3 to download and upload files to S3
 gem 'aws-sdk-s3'
 
 # Use dotenv to load environment variables
