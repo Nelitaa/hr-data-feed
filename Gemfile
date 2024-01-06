@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Ruby version
-ruby '3.2.1'
+ruby '3.3.0'
 
 # Use sinatra as web framework
 gem 'sinatra'
