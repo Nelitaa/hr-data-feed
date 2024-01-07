@@ -20,3 +20,6 @@ gem 'dotenv'
 
 # Use RSpec for testing
 gem 'rspec'
+
+#  Use Active Record as ORM
+gem 'activerecord'

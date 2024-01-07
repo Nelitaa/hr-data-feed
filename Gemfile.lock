@@ -1,6 +1,22 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    activemodel (7.1.2)
+      activesupport (= 7.1.2)
+    activerecord (7.1.2)
+      activemodel (= 7.1.2)
+      activesupport (= 7.1.2)
+      timeout (>= 0.4.0)
+    activesupport (7.1.2)
+      base64
+      bigdecimal
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      connection_pool (>= 2.2.5)
+      drb
+      i18n (>= 1.6, < 2)
+      minitest (>= 5.1)
+      mutex_m
+      tzinfo (~> 2.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
     aws-partitions (1.849.0)
@@ -18,14 +34,24 @@ GEM
       aws-sigv4 (~> 1.6)
     aws-sigv4 (1.6.1)
       aws-eventstream (~> 1, >= 1.0.2)
+    base64 (0.2.0)
+    bigdecimal (3.1.5)
+    concurrent-ruby (1.2.2)
+    connection_pool (2.4.1)
     csv (3.2.8)
     diff-lcs (1.5.0)
     dotenv (2.8.1)
+    drb (2.2.0)
+      ruby2_keywords
+    i18n (1.14.1)
+      concurrent-ruby (~> 1.0)
     jmespath (1.6.2)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
+    minitest (5.20.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
+    mutex_m (0.2.0)
     parallel (1.23.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -71,21 +97,22 @@ GEM
       rack-protection (= 3.1.0)
       tilt (~> 2.0)
     tilt (2.3.0)
+    timeout (0.4.1)
+    tzinfo (2.0.6)
+      concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
 
 PLATFORMS
   arm64-darwin-22
 
 DEPENDENCIES
+  activerecord
   aws-sdk-s3
   csv
   dotenv
   rspec
   rubocop (>= 1.0, < 2.0)
   sinatra
-
-RUBY VERSION
-   ruby 3.2.1p31
 
 BUNDLED WITH
    2.4.21
