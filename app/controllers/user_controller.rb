@@ -10,7 +10,7 @@ class UserController < Sinatra::Base
   end
 
   before do
-    @csv_data = fetch_csv_data(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV.fetch('AWS_FILE_NAME', nil))
+    @csv_data = fetch_csv_data(ENV['AWS_S3_BUCKET'] || 'hd-data-2023', ENV.fetch('AWS_FILE_NAME', nil) || 'users_hr_sync.csv')
   end
 
   get '/' do

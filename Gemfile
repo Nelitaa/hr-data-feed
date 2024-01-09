@@ -23,3 +23,6 @@ gem 'rspec'
 
 #  Use Active Record as ORM
 gem 'activerecord'
+
+# Use sqlite3 as database
+gem 'sqlite3', '~> 1.4'
