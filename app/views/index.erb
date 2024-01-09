@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Users</title>
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
+</head>
+<body>
+  <h1>Users List</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>User</th>
+        <th>State</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @csv_data.each do |row| %>
+        <tr>
+          <td><%= row['id'] %></td>
+          <td><%= row['user'] %></td>
+          <td><%= row['status'] %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h2>Add New User or Update Existing User</h2>
+  <form action="/create" method="post">
+    <label for="id">Id:</label>
+    <input type="number" name="id" required>
+    <br>
+    <label for="user">Name:</label>
+    <input type="text" name="user" required>
+    <br>
+    <label for="status">State:</label>
+    <input type="text" name="status" required>
+    <br>
+    <input type="submit" value="Add/Update User">
+  </form>
+</body>
+</html>

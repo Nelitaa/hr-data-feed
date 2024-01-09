@@ -1,0 +1,6 @@
+aws:
+  region: <%= ENV['AWS_REGION'] %>
+  access_key_id: <%= ENV['AWS_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['AWS_SECRET_ACCESS_KEY'] %>
+  s3_bucket: <%= ENV['AWS_S3_BUCKET'] %>
+  file_name: <%= ENV['AWS_FILE_NAME'] %>
